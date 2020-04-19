@@ -2,6 +2,9 @@ class Topic < ApplicationRecord
 
   has_many :questions
 
+  # allow to be followed acts_as_followable
+  acts_as_followable
+
   validates :name, presence: true
 
   extend FriendlyId

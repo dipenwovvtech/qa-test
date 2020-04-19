@@ -6,7 +6,7 @@
   <strong>User:</strong>
   <%= @question.user.try(:name) %>
   <% unless current_user.id == @question.user.id %>
-    <%= form_with(url: follow_user_path(@question, @user), local: true) do |form| %>
+    <%= form_with(url: follow_user_path(@question.user, @question), local: true) do |form| %>
       <span class="actions">
         <%= form.submit "Follow User", class: "follow_user" %>
       </span>
@@ -17,7 +17,7 @@
 <p>
   <strong>Topic:</strong>
   <%= @question.topic.try(:name) %>
-  <%= form_with(url: follow_topic_path(@question, @topic), local: true) do |form| %>
+  <%= form_with(url: follow_topic_path(@question.topic, @question), local: true) do |form| %>
     <span class="actions">
       <%= form.submit "Follow Topic", class: "follow_topic" %>
     </span>

@@ -7,6 +7,12 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
 
+  # allow to be followed acts_as_followable
+  acts_as_followable
+
+  # can follow other models acts_as_follower
+  acts_as_follower
+
   validates :name, presence: true
 
   extend FriendlyId

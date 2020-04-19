@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :follow_topic, :follow_user]
   before_action :all_topic, only: [:new, :create, :edit, :update]
 
   # GET /questions/1
@@ -53,6 +53,26 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def follow_topic
+    topic = Topic.friendly.find(params[:topic_id])
+    if current_user.following?(topic)
+      redirect_to question_path(@question), flash: { alert: "Already following."}
+    else
+      current_user.follow(topic)
+      redirect_to question_path(@question), flash: { notice: "You have followed #{topic.name}."}
+    end
+  end
+
+  def follow_user
+    user = User.friendly.find(params[:user_id])
+    if current_user.following?(user)
+      redirect_to question_path(@question), flash: { alert: "Already following."}
+    else
+      current_user.follow(user)
+      redirect_to question_path(@question), flash: { notice: "You have followed #{user.name}."}
     end
   end
 
