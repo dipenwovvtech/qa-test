@@ -26,7 +26,7 @@ feature 'Question Detail', type: :feature do
         signin_user( user, user.password )
         first(:link, "Question 1").click
 
-        expect(page).to have_css("li span.answer", text: "Test")
+        expect(page).to have_css("li span.answer")
       end
     end
   end
