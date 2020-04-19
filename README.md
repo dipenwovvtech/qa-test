@@ -26,8 +26,8 @@ Things you may want to cover:
 
 The following pages and actions need to be present.
 
-* The models need to be named Question, Answer, User, Topic.
-* Add a login feature using Devise gem.
+* The models need to be named Question, Answer, User, Topic. -
+* Add a login feature using Devise gem. - done
 * The homepage should list all questions as links with the class .question.
 * Clicking on a question should show open the questions' page.
 * It should have a button with class .follow_user to follow the user and another with .follow_topic to follow the topic.
