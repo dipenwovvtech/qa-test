@@ -22,4 +22,13 @@ class User < ApplicationRecord
   def secure_slug
     @random_slug ||=persisted? ? friendly_id: "#{Time.now.to_i}-#{name.parameterize}"
   end
+
+  def topics
+    following_by_type('Topic')
+  end
+
+  def following
+    following_by_type('User')
+  end
+
 end
