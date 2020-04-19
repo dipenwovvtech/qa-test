@@ -7,7 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
-
+require 'support/session_helper'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -46,6 +46,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.include Devise::Test::ControllerHelper, type: :controller
+
+  config.include SessionHelper, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
