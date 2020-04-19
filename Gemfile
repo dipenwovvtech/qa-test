@@ -47,3 +47,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Authentication with devise
 gem 'devise'
+
+# generate uniq slug url
+gem 'friendly_id', '~> 5.2.4'

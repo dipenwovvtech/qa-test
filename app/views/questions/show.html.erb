@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @question.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question.user.try(:name) %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @question.topic.try(:name) %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', root_path %>
