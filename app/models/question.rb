@@ -1,6 +1,6 @@
-class Topic < ApplicationRecord
-
-  has_many :questions
+class Question < ApplicationRecord
+  belongs_to :user
+  belongs_to :topic
 
   validates :name, presence: true
 
