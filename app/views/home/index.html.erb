@@ -1,0 +1,12 @@
+<h1>Question List</h1>
+<div class="question-list">
+  <ul>
+    <% @questions.each do |question| %>
+    <li>
+      <%= link_to question.name, question_path(question), class: "question" %>
+      <span>Topic: <%= question.topic.try(:name) %></span>
+      <span>User: <%= question.user.try(:name) %></span>
+    </li>
+    <% end -%>
+  </ul>
+</div>

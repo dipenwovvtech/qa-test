@@ -1,0 +1,49 @@
+<p>
+  <h2><%= @question.name %></h2>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question.user.try(:name) %>
+  <% unless current_user.id == @question.user.id %>
+    <%= form_with(url: follow_user_path(@question.user, @question), local: true) do |form| %>
+      <span class="actions">
+        <%= form.submit "Follow User", class: "follow_user" %>
+      </span>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @question.topic.try(:name) %>
+  <%= form_with(url: follow_topic_path(@question.topic, @question), local: true) do |form| %>
+    <span class="actions">
+      <%= form.submit "Follow Topic", class: "follow_topic" %>
+    </span>
+  <% end %>
+</p>
+
+<% if current_user.id == @question.user.id %>
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<% end %>
+<%= link_to 'Back', root_path %>
+
+<div class="question_answers">
+  <%= render "/questions/answers", locals: {question: @question} %>
+</div>
+
+
+<hr/>
+<div class="new_answer">
+<%= form_with(model: [@question, @answer], remote: true) do |form| %>
+  <div class="field">
+    <%= form.label :answer_body, "Answer" %>
+    <%= form.text_area :answer_body, col: 600, row: 10 %>
+  </div>
+
+  <span class="actions">
+    <%= form.submit %>
+  </span>
+<% end %>
+</div>

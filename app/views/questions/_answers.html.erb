@@ -1,0 +1,20 @@
+<ul>
+  <% @question.answers.each do |answer| %>
+    <% unless answer.new_record? %>
+      <li class="answer_body">
+        <span class="answer"><%= answer.answer_body %></span>
+        <p>
+          <strong>User:</strong>
+          <%= answer.user.try(:name) %>
+          <% unless current_user.id == answer.user.id %>
+            <%= form_with(url: follow_user_path(answer.user, @question), local: true) do |form| %>
+              <span class="actions">
+                <%= form.submit "Follow User", class: "follow_user" %>
+              </span>
+            <% end %>
+          <% end %>
+        </p>
+      </li>
+    <% end -%>
+  <% end %>
+</ul>

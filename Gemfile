@@ -31,6 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 end
 
 group :development do
@@ -44,3 +49,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Authentication with devise
+gem 'devise'
+
+# generate uniq slug url
+gem 'friendly_id', '~> 5.2.4'
+
+# generate following system
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
