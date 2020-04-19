@@ -50,3 +50,6 @@ gem 'devise'
 
 # generate uniq slug url
 gem 'friendly_id', '~> 5.2.4'
+
+# generate following system
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
