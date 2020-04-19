@@ -1,0 +1,5 @@
+<% if @answer.errors.present? %>
+alert("Please submit the answer");
+<% else %>
+$(".question_answers").html("<%= j render '/questions/answers', locals: {question: @question} %>");
+<% end %>

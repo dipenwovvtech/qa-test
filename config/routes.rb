@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :questions, except: [:index]
+  resources :questions, except: [:index] do
+    resources :answers, except: [:index, :show]
+  end
   resources :topics
   devise_for :users
   root to: "home#index"

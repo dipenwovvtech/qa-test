@@ -28,3 +28,22 @@
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <% end %>
 <%= link_to 'Back', root_path %>
+
+<div class="question_answers">
+  <%= render "/questions/answers", locals: {question: @question} %>
+</div>
+
+
+<hr/>
+<div class="new_answer">
+<%= form_with(model: [@question, @answer], remote: true) do |form| %>
+  <div class="field">
+    <%= form.label :answer_body, "Answer" %>
+    <%= form.text_area :answer_body, col: 600, row: 10 %>
+  </div>
+
+  <span class="actions">
+    <%= form.submit %>
+  </span>
+<% end %>
+</div>
